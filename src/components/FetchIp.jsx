@@ -1,31 +1,39 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from "axios";
 
 
-const FetchIp = () => {
-    const [ipAddress, setIPAddress] = useState("")
+const FetchIp = ({setLat, setLng, setCountryData, countryData}) => {
+    const [ip, setIP] = useState("")
 
     const fetchingLocation = async () => {
         try {
             const key = import.meta.env.VITE_REACT_APP_KEY
-            const getLocation = await axios.get(`https://geo.ipify.org/api/v2/country?apiKey=${key}`)
+            const userIp = await axios.get(`https://geo.ipify.org/api/v1?apiKey=${key}`)
+            const response = userIp.data 
 
-            if(!getLocation) throw new Error (`${getLocation.status} - fetching data unsuccessful.`)
-                 
-            setIPAddress(getLocation.data.ip)
-        } catch (error) {
-            console.error(error)
+            console.log(userIp.data)
+
+            setIP(response.ip)
+            setLat(response.location.lat);
+            setLng(response.location.lng);
+            setCountryData(response.location.country)
+        } 
+
+        catch (error){
+            console.error("Fetching country unsuccessful", error)
         }
     }
 
-    // fetchingLocation()
+    useEffect(() => {
+    fetchingLocation()
+    }, [])
+   
 
   return (
     <div>
         <h2>What is my IP location?</h2>
-        <p>Your IP location is: {ipAddress}</p>
-        <p>Your country is:</p>
-        <p>Local time:</p>
+        <p>Your IP location is: {ip}</p>
+        <p>Country: {countryData}</p>     
     </div>
   )
 }
