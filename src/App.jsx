@@ -1,7 +1,7 @@
 import FetchIp from './components/FetchIp'
 import React, {useState} from "react"
 import UserMap from './components/UserMap'
-// import Time from "./components/Time"
+import Time from "./components/Time"
 import Flag from "./components/Flag"
 import './App.css'
 
@@ -15,6 +15,7 @@ function App() {
     <>
       <div>
         <FetchIp setLat={setLat} setLng={setLng} setCountryData={setCountryData}/>
+        <Time countryData={countryData}/>
         <Flag countryData={countryData} />  
         {lat > 0 && lng > 0 ? <UserMap lat={lat} lng={lng} /> : null}
        

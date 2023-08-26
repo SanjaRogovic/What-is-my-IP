@@ -33,7 +33,7 @@ const FetchIp = ({setLat, setLng, setCountryData, countryData}) => {
     <div>
         <h2>What is my IP location?</h2>
         <p>Your IP location is: {ip}</p>
-        <p>Country: {countryData}</p>     
+        {/* <p>Country: {countryData}</p>      */}
     </div>
   )
 }

@@ -2,16 +2,17 @@ import React, {useState, useEffect} from 'react'
 import { DateTime } from 'luxon'
 
 const Time = ({countryData}) => {
-
-    const [date, setDate] = useState("")
+    const [localTime, setLocalTime] = useState("")
+   
+    const now = DateTime.now()
 
     useEffect(()=> {
-        setDate(DateTime.now())
+        setLocalTime(now.toLocaleString(DateTime.DATETIME_MED))
     }, [])
-    
+
   return (
     <div>
-        <p>{date} {countryData}</p> 
+        <p>Date & Time: {countryData.countrydata} : {localTime}</p> 
     </div>
   )
 }
