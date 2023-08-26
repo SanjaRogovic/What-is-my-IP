@@ -14,7 +14,7 @@ const Time = ({countryData}) => {
 
   return (
     <div>
-        <p>Date & Time: {countryData.countrydata} : {localTime}</p> 
+        <div>Date & Time: {countryData.countrydata} : {localTime}</div> 
     </div>
   )
 }
