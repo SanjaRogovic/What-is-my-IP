@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 
 const Time = ({countryData}) => {
     const [localTime, setLocalTime] = useState("")
-    const [timezone, setTimezone] = useState("")
+    // const [timezone, setTimezone] = useState("")
    
     const now = DateTime.now()
 

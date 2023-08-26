@@ -3,7 +3,6 @@ import React, {useState} from "react"
 import UserMap from './components/UserMap'
 import Time from "./components/Time"
 import Flag from "./components/Flag"
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './App.css'
 
