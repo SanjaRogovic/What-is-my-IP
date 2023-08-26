@@ -3,6 +3,8 @@ import React, {useState} from "react"
 import UserMap from './components/UserMap'
 import Time from "./components/Time"
 import Flag from "./components/Flag"
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import './App.css'
 
 function App() {
@@ -13,13 +15,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <FetchIp setLat={setLat} setLng={setLng} setCountryData={setCountryData}/>
+      <Card style={{width: "40rem"}}>
+        <Card.Title>
+          <FetchIp setLat={setLat} setLng={setLng} setCountryData={setCountryData}/>
+        </Card.Title>  
+        <Card.Text>
         <Time countryData={countryData}/>
+        </Card.Text>     
         <Flag countryData={countryData} />  
         {lat > 0 && lng > 0 ? <UserMap lat={lat} lng={lng} /> : null}
        
-      </div>
+      </Card>
     </>
   );
 }
